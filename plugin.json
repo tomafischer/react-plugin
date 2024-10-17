@@ -1,0 +1,13 @@
+{
+  "id": "react-apm",
+  "version": "0.0.1",
+  "meta": {
+      "label": "React",
+      "description": "",
+      "author": "Andrey Avtomonov",
+      "icon": "icon-puzzle-piece",
+      "tags": [],
+      "url": "",
+      "licenseInfo": "Apache Software License"
+  }
+}
