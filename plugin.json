@@ -1,10 +1,10 @@
 {
-  "id": "react-apm",
+  "id": "react-apm-git",
   "version": "0.0.1",
   "meta": {
       "label": "React",
       "description": "",
-      "author": "Andrey Avtomonov",
+      "author": "Tom Fischer",
       "icon": "icon-puzzle-piece",
       "tags": [],
       "url": "",
