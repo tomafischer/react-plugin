@@ -10,7 +10,7 @@
   },
 
   "baseType": "STANDARD", // WARNING: do not change
-  "hasBackend": "false",
+  "hasBackend": "true",
   "noJSSecurity": "false",
   "standardWebAppLibraries": ["jquery","dataiku"],
 
