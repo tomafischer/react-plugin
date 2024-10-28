@@ -1,0 +1,14 @@
+{
+  "meta": {
+    "label": "APM react app",
+    "description": "APM webapp built with React",
+    "icon": "icon-puzzle-piece"
+  },
+
+  "baseType": "STANDARD",
+  "hasBackend": "true",
+  "noJSSecurity": "false",
+  "standardWebAppLibraries": ["jquery", "dataiku"],
+  "params": [],
+  "roles": []
+}
