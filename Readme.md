@@ -15,7 +15,9 @@ npm run dev
 
 ## upgrade react 19 rc
 ```
-npm install react@rc react-dom@rc
+npm install react@rc react-dom@rc 
+npm instll  @reduxjs/toolkit --legacy-peer-deps
+npm install react-redux --legacy-peer-deps
 ```
 
 

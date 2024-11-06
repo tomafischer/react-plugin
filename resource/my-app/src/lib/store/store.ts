@@ -19,10 +19,12 @@ const store = configureStore({
   },
 });
 
-console.log(store);
 
-const startingState = store.getState();
-console.log(JSON.stringify( startingState));
+export {store, songsSlice};
+//console.log(store);
+
+//const startingState = store.getState();
+//console.log(JSON.stringify( startingState));
 store.dispatch({type: 'song/addSong', payload: 'Imagine'});
 const finalState = store.getState();
 console.log(JSON.stringify(finalState));
