@@ -17,3 +17,8 @@ npm run dev
 ```
 npm install react@rc react-dom@rc
 ```
+
+
+## Links
+Redux class demo page:
+https://codesandbox.io/p/sandbox/rtk-360ssw

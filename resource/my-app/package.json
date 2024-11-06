@@ -10,9 +10,10 @@
     "preview": "vite preview"
   },
   "dependencies": {
+    "@faker-js/faker": "^9.2.0",
+    "@reduxjs/toolkit": "^2.3.0",
     "react": "^19.0.0-rc-33c7bd9a-20241104",
-    "react-dom": "^19.0.0-rc-33c7bd9a-20241104",
-    "react-router-dom": "^6.27.0"
+    "react-dom": "^19.0.0-rc-33c7bd9a-20241104"
   },
   "devDependencies": {
     "@eslint/js": "^9.13.0",

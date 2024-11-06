@@ -3,6 +3,7 @@ import reactLogo from './assets/react.svg'
 import viteLogo from '/vite.svg'
 import './App.css'
 
+import MovieSongPage from './components/class-redux/movie-song-page';
 
 function App() {
   const [count, setCount] = useState(0)
@@ -29,7 +30,7 @@ function App() {
       <p className="read-the-docs">
         Click on the Vite and React logos to learn more
       </p>
-      <a href="./second-route" className='mt-5'>Second route</a>
+      <MovieSongPage/>
     </>
   )
 }
