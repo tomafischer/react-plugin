@@ -10,10 +10,12 @@ export default function SongPlaylist({}: Props) {
   const handleSongAdd = (song: string) => {
     // To Do:
     // Add song to list of songs
+    return song;
   };
   const handleSongRemove = (song: string) => {
     // To Do:
     // Remove song from list of songs
+    return song;
   };
 
   const renderedSongs = songPlaylist.map((song) => {

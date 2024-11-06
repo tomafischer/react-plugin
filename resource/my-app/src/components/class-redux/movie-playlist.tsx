@@ -10,10 +10,12 @@ export default function MovePlaylist({}: Props) {
   const handleMovieAdd = (movie : Movie) => {
     // To Do:
     // Add movie to list of movies
+    return movie;
   };
   const handleMovieRemove = (movie: Movie) => {
     // To Do:
     // Remove movie from list of movies
+    return movie;
   };
 
   const renderedMovies = moviePlaylist.map((movie) => {
