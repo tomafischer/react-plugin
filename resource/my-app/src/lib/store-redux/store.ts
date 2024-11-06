@@ -13,18 +13,33 @@ const songsSlice = createSlice({
   },
 });
 
+
+const navSlice = createSlice({
+  name: 'nav',
+  initialState: 'home' ,
+  reducers: {
+    navigate: (state, action) => {
+      return action.payload;
+    },
+  },
+})
+
+
 const store = configureStore({
   reducer: {
     songs: songsSlice.reducer,
+    nav: navSlice.reducer,
   },
 });
 
 
 export {store, songsSlice};
+export const {addSong} = songsSlice.actions;
+export const {navigate} = navSlice.actions;
 //console.log(store);
 
 //const startingState = store.getState();
 //console.log(JSON.stringify( startingState));
-store.dispatch({type: 'song/addSong', payload: 'Imagine'});
-const finalState = store.getState();
-console.log(JSON.stringify(finalState));
+//store.dispatch({type: 'song/addSong', payload: 'Imagine'});
+//const finalState = store.getState();
+//console.log(JSON.stringify(finalState));

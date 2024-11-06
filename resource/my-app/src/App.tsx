@@ -5,11 +5,14 @@ import './App.css'
 
 import MovieSongPage from './components/class-redux/movie-song-page';
 
+import SiteHeader from '@/components/navbar/site-header';
+
 function App() {
   const [count, setCount] = useState(0)
 
   return (
     <>
+     <SiteHeader />
       <div className='flex justify-center items-center mt-16'>
         <a href="https://vite.dev" target="_blank">
           <img src={viteLogo} className="logo" alt="Vite logo" />
