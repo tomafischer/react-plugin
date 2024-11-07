@@ -13,12 +13,24 @@ const songsSlice = createSlice({
   },
 });
 
+const moviesSlice = createSlice({
+  name: 'movie',
+  initialState: [] as string[],
+  reducers: {
+    addMovie: (state, action) => {
+      state.push(action.payload);
+    },
+    removeMovie: (state, action) => {
+      return state.filter(movie => movie !== action.payload);
+    },
+  },
+})
 
 const navSlice = createSlice({
   name: 'nav',
   initialState: 'home' ,
   reducers: {
-    navigate: (state, action) => {
+    navigate: (_state, action) => {
       return action.payload;
     },
   },
@@ -28,13 +40,15 @@ const navSlice = createSlice({
 const store = configureStore({
   reducer: {
     songs: songsSlice.reducer,
+    movies: moviesSlice.reducer,
     nav: navSlice.reducer,
   },
 });
 
 
 export {store, songsSlice};
-export const {addSong} = songsSlice.actions;
+export const {addSong, removeSong} = songsSlice.actions;
+export const {addMovie, removeMovie} = moviesSlice.actions;
 export const {navigate} = navSlice.actions;
 //console.log(store);
 

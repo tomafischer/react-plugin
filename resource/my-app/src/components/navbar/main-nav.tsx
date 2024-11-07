@@ -15,6 +15,8 @@ export default function MainNav({ }: Props) {
       <nav className="flex items-center gap-4 text-sm lg:gap-6">
         <NavigationItem route={routes.home}>Home</NavigationItem>
         <NavigationItem route={routes.testredux}>Redux</NavigationItem>
+        <NavigationItem route={routes.modeltesting}>Model Testing</NavigationItem>
+
       </nav>
     </div>
   )

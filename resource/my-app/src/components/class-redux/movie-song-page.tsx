@@ -10,7 +10,8 @@ export default function MovieSongPage({}: Props) {
 
   
   return (
-    <div className="container is-fluid">
+    <div className="p-3">
+      <h1 className="text-2xl mb-3">Movie and Song Playlists - Redux Testing</h1>
     <button onClick={() => handleResetClick()} className="button is-danger">
       Reset Both Playlists
     </button>

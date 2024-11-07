@@ -1,6 +1,6 @@
 import { createRandomSong } from "../../lib/random-data-provider";
 import { useDispatch, useSelector } from "react-redux";
-import { addSong } from "../../lib/store-redux/store";
+import { addSong, removeSong } from "../../lib/store-redux/store";
 type Props = {}
 
 export default function SongPlaylist({}: Props) {
@@ -18,7 +18,7 @@ export default function SongPlaylist({}: Props) {
   };
   const handleSongRemove = (song: string) => {
     // To Do:
-    // Remove song from list of songs
+    dispatch(removeSong(song));
     return song;
   };
 
@@ -37,9 +37,9 @@ export default function SongPlaylist({}: Props) {
   });
 
   return (
-    <div className="content">
-      <div className="table-header">
-        <h3 className="subtitle is-3">Song Playlist</h3>
+    <div className="my-4">
+   
+        <h3 className="my-2">Song Playlist</h3>
         <div className="buttons">
           <button
             onClick={() => handleSongAdd(createRandomSong())}
@@ -48,7 +48,7 @@ export default function SongPlaylist({}: Props) {
             + Add Song to Playlist
           </button>
         </div>
-      </div>
+    
       <ul>{renderedSongs}</ul>
     </div>
   );

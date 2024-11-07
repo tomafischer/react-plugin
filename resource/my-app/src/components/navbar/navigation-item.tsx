@@ -10,11 +10,13 @@ type Props = {
 
 export default function NavigationItem({route, className, children}: Props) {
   const dispatch = useDispatch();
-  const currentRoute = useSelector((state: any) => state.route);
+  const currentRoute = useSelector((state: any) => state.nav);
+
   const handleNavClick = () => {
-    console.log("Navigate to: ", route);
+   // console.log("Navigate to: ", route);
     dispatch(navigate(route));
   }
+ // console.log("Current Route navitem: ", currentRoute);
   return (
     <div className={cn(
       "transition-colors hover:text-foreground/80",
