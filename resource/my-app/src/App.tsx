@@ -9,7 +9,8 @@ import SiteHeader from '@/components/navbar/site-header';
 import { routes } from './models/routes';
 import HomePage from './components/home-page';
 import { ThemeProvider } from 'next-themes';
-import ModelTestingPage from './components/model-testing-page';
+import ModelTestingPage from '@/components/model-testing/model-testing-page';
+import ModelTestingConfigPage from './components/model-testing/model-testing-conf-page';
 
 function App() {
 
@@ -22,6 +23,7 @@ function App() {
       {currentRoute === routes.home && <HomePage />}
       {currentRoute === routes.testredux && <MovieSongPage />}
       {currentRoute === routes.modeltesting && <ModelTestingPage/>}
+      {currentRoute === routes.modeltestingconf && <ModelTestingConfigPage/>}
       </ThemeProvider>
     </>
   )
