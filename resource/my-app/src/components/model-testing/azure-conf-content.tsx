@@ -13,12 +13,12 @@ export default function AzureConfContent({ }: Props) {
         <div className="font-semibold text-xl">
           Model Testing Configuration Page
         </div>
-        <NavigationItem route={routes.modeltesting}>
+        {/* <NavigationItem route={routes.modeltesting}>
           <div className="flex items-center gap-2">
             <LuBrainCircuit />
             <div>  Model Testing </div>
           </div>
-        </NavigationItem>
+        </NavigationItem> */}
 
       </div>
       <div className="flex">
