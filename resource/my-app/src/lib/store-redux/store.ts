@@ -58,7 +58,7 @@ export const navigateModelContent = (route: string) : ThunkAction<void, RootStat
   type ObjectKey = keyof typeof modelRoutes;
   const dynamicKey: ObjectKey = route as ObjectKey;
   const mroute = modelRoutes[dynamicKey];
-  console.log("model content route: ",mroute);
+  //console.log("model content route: ",mroute);
   if (mroute) {
     dispatch(navModelSlice.actions.navModel(mroute));
   } else {
