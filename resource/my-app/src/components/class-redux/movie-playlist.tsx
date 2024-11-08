@@ -1,7 +1,7 @@
 import { Movie } from "../../models/class-redux/movies";
 import { createRandomMovie } from "../../lib/random-data-provider.tsx";
 import { useDispatch, useSelector } from "react-redux";
-import { addMovie, removeMovie } from "@/lib/store-redux/store";
+import { addMovie,  removeMovie, RootState } from "@/lib/store-redux/store";
 type Props = {}
 
 export default function MovePlaylist({ }: Props) {
@@ -9,7 +9,7 @@ export default function MovePlaylist({ }: Props) {
   // Get list of movies
   const dispatch = useDispatch();
   
-  const moviePlaylist: Array<Movie> = useSelector((state: any) => state.movies);
+  const moviePlaylist: Array<Movie> = useSelector((state: RootState) => state.movies);
   
   const handleMovieAdd = (movie: Movie) => {
     dispatch(addMovie(movie));

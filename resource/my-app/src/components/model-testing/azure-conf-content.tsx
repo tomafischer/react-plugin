@@ -5,7 +5,7 @@ import { getFullPredictUrl, ctxf_default_request } from "@/lib/model-testing/azu
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "../ui/card";
 type Props = {}
 
-export default function ModelTestingConfigPage({ }: Props) {
+export default function AzureConfContent({ }: Props) {
   return (
     <div className="p-3">
 

@@ -1,16 +1,22 @@
 
 import { GoGear } from "react-icons/go";
 import NavigationItem from "@/components/navbar/navigation-item";
-import { routes } from "@/models/routes";
+import { modelRoutes, routes } from "@/models/routes";
 import { SidebarInset, SidebarProvider, SidebarTrigger } from "@/components/ui/sidebar"
 import { ModelSidebar } from "@/components/model-testing/model-side-bar";
 import { Separator } from "@/components/ui/separator";
 import { Breadcrumb, BreadcrumbItem, BreadcrumbLink, BreadcrumbList, BreadcrumbPage, BreadcrumbSeparator } from "@/components/ui/breadcrumb";
- 
+import { useSelector } from "react-redux";
+import { RootState } from "@/lib/store-redux/store";
+import { Home } from "lucide-react";
+import HomeContent from "./home-content";
+import AzureConfContent from "./azure-conf-content";
+import PlaygroundContent from "./playground-content";
 //https://ui.shadcn.com/blocks#sidebar-07
 
 type Props = {}
 export default function ModelTestingPage({ }: Props) {
+  const content_route = useSelector((state: RootState) => state.navmodel);
   return (
     <SidebarProvider>
     <div className="mt-14"/>
@@ -24,25 +30,29 @@ export default function ModelTestingPage({ }: Props) {
               <BreadcrumbList>
                 <BreadcrumbItem className="hidden md:block">
                   <BreadcrumbLink href="#">
-                    Building Your Application
+                    {content_route.group}
                   </BreadcrumbLink>
                 </BreadcrumbItem>
                 <BreadcrumbSeparator className="hidden md:block" />
                 <BreadcrumbItem>
-                  <BreadcrumbPage>Data Fetching</BreadcrumbPage>
+                  <BreadcrumbPage>{content_route.content}</BreadcrumbPage>
                 </BreadcrumbItem>
               </BreadcrumbList>
             </Breadcrumb>
           </div>
         </header>
-        <div className="flex flex-1 flex-col gap-4 p-4 pt-0">
+        {content_route.route ===  modelRoutes.home.route && <HomeContent />}
+        {content_route.route ===  modelRoutes.playground.route && <PlaygroundContent />}
+        {content_route.route ===  modelRoutes.azuresetting.route && <AzureConfContent />}
+
+        {/* <div className="flex flex-1 flex-col gap-4 p-4 pt-0">
           <div className="grid auto-rows-min gap-4 md:grid-cols-3">
             <div className="aspect-video rounded-xl bg-muted/50" />
             <div className="aspect-video rounded-xl bg-muted/50" />
             <div className="aspect-video rounded-xl bg-muted/50" />
           </div>
           <div className="min-h-[100vh] flex-1 rounded-xl bg-muted/50 md:min-h-min" />
-        </div>
+        </div> */}
       </SidebarInset>
   
     </SidebarProvider>

@@ -12,14 +12,21 @@ import {
 import { LuBrainCircuit } from "react-icons/lu"
 import { TbPlayBasketball } from "react-icons/tb";
 import { SiAzurefunctions } from "react-icons/si";
-const data = {
 
-}
-
+import { useDispatch, useSelector } from "react-redux";
+import { modelRoutes } from "@/models/routes";
+import { AppDispatch, navigateModelContent } from "@/lib/store-redux/store";
 export function ModelSidebar() {
+  const dispatch: AppDispatch = useDispatch();
+
+  const navigateModel = (route: string) => {
+    //console.log("about to Navigate to: ", route);
+    dispatch(navigateModelContent(route));
+  }
+
   return (
     <Sidebar>
-      <SidebarHeader >
+      <SidebarHeader onClick={()=>navigateModel(modelRoutes.home.route)} >
         <div className="flex items-center gap-2 md:mt-14">
           <LuBrainCircuit />
           <div className="font-semibold">Model Testing</div>
@@ -27,10 +34,10 @@ export function ModelSidebar() {
       </SidebarHeader>
       <SidebarContent>
         <SidebarGroup>
-          <SidebarGroupLabel>Playground</SidebarGroupLabel>
+          <SidebarGroupLabel >Playground</SidebarGroupLabel>
           <SidebarMenu>
             <SidebarMenuItem>
-              <SidebarMenuButton >
+              <SidebarMenuButton onClick={()=>navigateModel(modelRoutes.playground.route)}>
                 <TbPlayBasketball /> 
                 <div className="font-semibold">Playground</div>
               </SidebarMenuButton>
@@ -44,7 +51,7 @@ export function ModelSidebar() {
           <SidebarGroupLabel>Settings</SidebarGroupLabel>
           <SidebarMenu>
             <SidebarMenuItem>
-              <SidebarMenuButton >
+              <SidebarMenuButton onClick={()=>navigateModel(modelRoutes.azuresetting.route)} >
                 <SiAzurefunctions />
                 <div className="font-semibold">Azure Site Settings</div>
               </SidebarMenuButton>
