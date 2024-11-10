@@ -1,6 +1,7 @@
 
 import { Suspense} from "react";
 //import {useFormState} from 'react-dom'
+import {use} from 'react';
 import {useActionState} from 'react'
 import { SkeletonDefault } from "../skeleton-default";
 import { Button } from "../ui/button";
@@ -19,7 +20,7 @@ let myPromise: Promise<string> = new Promise((resolve, reject) => {
   // Asynchronous operation
   setTimeout(() => {
     resolve("Hello from the promise!");
-  }, 1000);
+  }, 5000);
 });
 
 export default function PlaygroundContent({ }: Props) {
@@ -31,10 +32,10 @@ export default function PlaygroundContent({ }: Props) {
     });
   }
   
-  const [error, submitAction, isPending] = useFormState(
+  const [error, submitAction, isPending] = useActionState(
     async () => {
       await waitabit();
-      return;
+      return;}
   )
   const onSubmit = async () => {
     console.log('clicked');
