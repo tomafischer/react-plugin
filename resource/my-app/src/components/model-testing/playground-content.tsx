@@ -1,16 +1,53 @@
-import React from 'react'
 
+import { Suspense} from "react";
+//import {useFormState} from 'react-dom'
+import {useActionState} from 'react'
+import { SkeletonDefault } from "../skeleton-default";
+import { Button } from "../ui/button";
 type Props = {}
 
-export default function PlaygroundContent({}: Props) {
+function AzureResults({ resultPromise }: { resultPromise: Promise<any> }) {
+  use(resultPromise);
+  //await promise
   return (
-    <div className="flex flex-1 flex-col gap-4 p-4 pt-0">
-          <div className="grid auto-rows-min gap-4 md:grid-cols-3">
-            <div className="aspect-video rounded-xl bg-muted/50" />
-            <div className="aspect-video rounded-xl bg-muted/50" />
-            <div className="aspect-video rounded-xl bg-muted/50" />
-          </div>
-          <div className="min-h-[100vh] flex-1 rounded-xl bg-muted/50 md:min-h-min" />
-        </div>
+    
+    <div className="p-4 bg-orange-200"> Here comes the outcome</div>
   )
 }
+
+let myPromise: Promise<string> = new Promise((resolve, reject) => {
+  // Asynchronous operation
+  setTimeout(() => {
+    resolve("Hello from the promise!");
+  }, 1000);
+});
+
+export default function PlaygroundContent({ }: Props) {
+  const waitabit = async () => {
+    return new Promise(() => { 
+      setTimeout(() => {
+        console.log('done waiting 2 seconds');
+      }, 2000);
+    });
+  }
+  
+  const [error, submitAction, isPending] = useFormState(
+    async () => {
+      await waitabit();
+      return;
+  )
+  const onSubmit = async () => {
+    console.log('clicked');
+ 
+  }
+  return (
+    <div className="flex flex-1 flex-col gap-4 p-4 pt-0">
+      <Button onClick={()=>onSubmit()}>Click me</Button>
+      <Suspense fallback={<SkeletonDefault />}> 
+        <AzureResults resultPromise={myPromise}/>
+      </Suspense>
+    </div>
+  )
+}
+
+
