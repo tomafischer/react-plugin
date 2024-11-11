@@ -1,59 +1,27 @@
 
-import { Suspense, useTransition} from "react";
+import {  useTransition} from "react";
 //import {useFormState} from 'react-dom'
 import {use} from 'react';
-import {useActionState} from 'react'
-import { SkeletonDefault } from "../skeleton-default";
-import { Button } from "../ui/button";
+import { useForm } from 'react-hook-form';
+import * as z from 'zod';
+
 type Props = {}
 
-function AzureResults({ resultPromise }: { resultPromise: Promise<any> }) {
-  use(resultPromise);
-  //await promise
-  return (
-    
-    <div className="p-4 bg-orange-200"> Here comes the outcome</div>
-  )
-}
-
-let myPromise = () => new Promise((resolve, reject) => {
-  // Asynchronous operation
-  setTimeout(() => {
-    resolve("Hello from the promise!");
-  }, 2000);
+const formSchema = z.object({
+  url: z.string().url(),
+  body: z.string().optional(),
+  
 });
+type FormData = z.infer<typeof formSchema>;
 
 export default function PlaygroundContent({ }: Props) {
-  const waitabit = async () => {
-    return new Promise(() => { 
-      setTimeout(() => {
-        console.log('done waiting 2 seconds');
-      }, 2000);
-    });
-  }
-  
-  // const [error, submitAction, isPending] = useActionState(
-  //   async () => {
-  //     await waitabit();
-  //     return;}
-  // )
 
-  const [isPending, startTransition] = useTransition();
-  const onSubmit = () => {
-    console.log('clicked');
-    startTransition( async () => {
-      console.log('transition started');
-      await myPromise();
-    });
- 
-  }
+  const form = useForm<FormData>({
+  });
+  
   return (
-    <div className="flex flex-1 flex-col gap-4 p-4 pt-0">
-      <Button onClick={()=>onSubmit()}>Click me</Button>
-      {isPending ? <div>loading...</div> : <div>not loading</div>}  
-      <Suspense fallback={<SkeletonDefault />}> 
-        <AzureResults resultPromise={myPromise()}/>
-      </Suspense>
+    <div className="p-2">
+     
     </div>
   )
 }
