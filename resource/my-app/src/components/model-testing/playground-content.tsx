@@ -1,5 +1,5 @@
 
-import { Suspense} from "react";
+import { Suspense, useTransition} from "react";
 //import {useFormState} from 'react-dom'
 import {use} from 'react';
 import {useActionState} from 'react'
@@ -16,11 +16,11 @@ function AzureResults({ resultPromise }: { resultPromise: Promise<any> }) {
   )
 }
 
-let myPromise: Promise<string> = new Promise((resolve, reject) => {
+let myPromise = () => new Promise((resolve, reject) => {
   // Asynchronous operation
   setTimeout(() => {
     resolve("Hello from the promise!");
-  }, 5000);
+  }, 2000);
 });
 
 export default function PlaygroundContent({ }: Props) {
@@ -32,20 +32,27 @@ export default function PlaygroundContent({ }: Props) {
     });
   }
   
-  const [error, submitAction, isPending] = useActionState(
-    async () => {
-      await waitabit();
-      return;}
-  )
-  const onSubmit = async () => {
+  // const [error, submitAction, isPending] = useActionState(
+  //   async () => {
+  //     await waitabit();
+  //     return;}
+  // )
+
+  const [isPending, startTransition] = useTransition();
+  const onSubmit = () => {
     console.log('clicked');
+    startTransition( async () => {
+      console.log('transition started');
+      await myPromise();
+    });
  
   }
   return (
     <div className="flex flex-1 flex-col gap-4 p-4 pt-0">
       <Button onClick={()=>onSubmit()}>Click me</Button>
+      {isPending ? <div>loading...</div> : <div>not loading</div>}  
       <Suspense fallback={<SkeletonDefault />}> 
-        <AzureResults resultPromise={myPromise}/>
+        <AzureResults resultPromise={myPromise()}/>
       </Suspense>
     </div>
   )
