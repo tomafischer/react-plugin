@@ -1,6 +1,7 @@
 import {configureStore, createSlice, Dispatch, PayloadAction, ThunkAction, UnknownAction} from '@reduxjs/toolkit';
 import { ModelRoute } from '@/models/routes';
 import { modelRoutes } from '@/models/routes';
+import { assetSlice } from './assets-slice';
 const songsSlice = createSlice({
   name: 'song',
   initialState: [] as string[],
@@ -73,7 +74,8 @@ const store = configureStore({
     songs: songsSlice.reducer,
     movies: moviesSlice.reducer,
     nav: navSlice.reducer,
-    navmodel: navModelSlice.reducer
+    navmodel: navModelSlice.reducer,
+    assets: assetSlice.reducer,
   },
 });
 

@@ -1,0 +1,13 @@
+[
+ {
+  "key":"ctxf",
+  "display_name": "ctxf",
+  "description": "Current Transformer"
+ },
+ {
+  "key":"ccvt",
+  "display_name": "ccvt",
+  "description": "Capacitor Voltage Transformer"
+ }
+
+]

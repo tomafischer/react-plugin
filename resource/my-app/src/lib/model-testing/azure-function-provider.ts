@@ -1,29 +1,40 @@
-import {azureFuncitonConf} from './azure-function-conf';
-
-type Environment = 'localhost' | 'dev' | 'acc';
+import { Asset } from "@/models/asset";
+import { azureFuncitonConf } from "./azure-function-conf";
+import assetsFake from "./assets-fake.json";
+type Environment = "localhost" | "dev" | "acc";
 
 export const fetchGET = async (url: string, method: string, body: any) => {
   const response = fetch(url, {
     method: method,
     headers: {
-      'Content-Type': 'application/json',
+      "Content-Type": "application/json",
     },
     body: JSON.stringify(body),
   });
-  return response;//response.json();
-}
+  return response; //response.json();
+};
 
-
-export const getFullPredictUrl = (env: string, asset:string) : string =>  {
+export const getFullPredictUrl = (env: string, asset: string): string => {
   if (!(env in azureFuncitonConf)) {
-    throw new Error(`The environment ${env} is not defined in azureFuncitonConf`);
-    
+    throw new Error(
+      `The environment ${env} is not defined in azureFuncitonConf`
+    );
   }
   const env2 = env as Environment;
-  const port = 'port' in azureFuncitonConf[env2] ? `:${azureFuncitonConf[env2].port}` : '';
-  const url = `${azureFuncitonConf[env2].base_url + port}/api/model_${asset}_predict?code=${azureFuncitonConf[env2].function_key}`;
+  const port =
+    "port" in azureFuncitonConf[env2] ? `:${azureFuncitonConf[env2].port}` : "";
+  const url = `${
+    azureFuncitonConf[env2].base_url + port
+  }/api/model_${asset}_predict?code=${azureFuncitonConf[env2].function_key}`;
   return url;
-}
+};
+
+export const getAssets = async (): Promise<Array<Asset>> => {
+  // Placeholder implementation, replace with actual logic
+  return new Promise((resolve, reject) => {
+    resolve(assetsFake as any as Array<Asset>);
+  });
+};
 
 
 export const ctxf_default_request = `{
@@ -81,4 +92,4 @@ export const ctxf_default_request = `{
     },
     "SimulationConfiguration": null
 }
-`
+`;
